@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="container nav-content">
+    <a class="brand" href="{% url 'home' %}">PremiumShop</a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'create' %}" class="btn">+ Create</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="page-title">All Products</h1>
+
+  <div class="grid">
+
+    {% for product in products %}
+    <div class="card">
+      <img src="{{product.image.url}}">
+      <div class="card-body">
+        <h3 class="card-title">{{product.title}}</h3>
+        <p class="price">${{product.price}}</p>
+        <p class="desc">{{product.desc}}</p>
+
+        <a class="btn" href="{% url 'detail' product.pk %}">View</a>
+        <a class="btn-outline" href="{% url 'update' product.pk %}">Edit</a>
+        <a class="btn-danger" href="{% url 'delete' product.pk %}">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+
+  </div>
+
+</div>
+
+</body>
+</html>

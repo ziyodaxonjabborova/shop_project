@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="container nav-content">
+    <a class="brand" href="{% url 'home' %}">PremiumShop</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="page-title">Product Detail</h1>
+
+  <div class="card" style="max-width: 600px; margin:auto;">
+    <img src="{{product.image.url}}">
+    <div class="card-body">
+      <h3 class="card-title">{{product.title}}</h3>
+
+      <p class="price">${{product.price}}</p>
+      <p class="desc">
+        {{product.desc}}
+      </p>
+
+      <a class="btn-outline" href="{% url 'home' %}">Back</a>
+      <a class="btn" href="{% url 'update' product.pk %}">Edit</a>
+      <a class="btn-danger" href="{% url 'delete' product.pk %}">Delete</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
